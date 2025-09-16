@@ -22,6 +22,7 @@ jobs:
           conda config --append channels conda-forge
           conda config --set anaconda_upload no
           conda build conda
+        env:
           PACKAGEFILE=`conda build conda --output`
       
       - name: Publish to Conda
