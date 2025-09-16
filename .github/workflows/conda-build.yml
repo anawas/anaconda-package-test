@@ -14,7 +14,7 @@ jobs:
         with:
           auto-update-conda: true
       
-      - name: Build conda
+      - name: Build conda package
         shell: bash -l {0}
         run: |
           conda install "conda-build>=25"
