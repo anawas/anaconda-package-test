@@ -22,13 +22,12 @@ jobs:
           conda config --append channels conda-forge
           conda config --set anaconda_upload no
           conda build conda
-          echo "-----" `conda build conda --output`
-      
+
       - name: Publish to Conda
         shell: bash -l {0}
         run: |
           conda install anaconda-client
           echo "*********" `anaconda --version`
           echo "-----" `conda build conda --output`
-          anaconda -t ${{ secrets.ANACONDA_SECRET }} upload --force "/usr/share/miniconda/envs/test/conda-bld/linux-64/conda_gc_test-*-*.conda"
+          anaconda -t ${{ secrets.ANACONDA_SECRET }} upload --force "/usr/share/miniconda/envs/test/conda-bld/linux-64/conda_gc_test-*.conda"
 
