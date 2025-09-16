@@ -29,5 +29,5 @@ jobs:
         run: |
           conda install anaconda-client
           echo "*********" `anaconda --version`
-          anaconda -t ${{ ts.ANACONDA_SECRET }} upload --force "/usr/share/miniconda/envs/test/conda-bld/linux-64/conda_gc_test-*-*.conda"
+          anaconda -t ${{ secrets.ANACONDA_SECRET }} upload --force "/usr/share/miniconda/envs/test/conda-bld/linux-64/conda_gc_test-*-*.conda"
 
