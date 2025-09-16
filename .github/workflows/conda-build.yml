@@ -9,10 +9,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      
       - name: Install conda
         uses: conda-incubator/setup-miniconda@v3
         with:
           auto-update-conda: true
+      
       - name: Build conda
         shell: bash -l {0}
         run: |
@@ -21,7 +23,8 @@ jobs:
           conda config --append channels conda-forge
           conda config --set anaconda_upload no
           conda build conda
-      - Publish to Conda:
+      
+      - name: Publish to Conda
         shell: bash -l {0}
         run: |
           conda activate base
