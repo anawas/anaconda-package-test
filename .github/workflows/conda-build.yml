@@ -26,7 +26,7 @@ jobs:
       
       - name: Publish to Conda
         shell: bash -l {0}
-        with:
+        env:
           SUPER_SECRET: ${{ secrets.ANACONDA_SECRET }}
         run: |
           conda activate base
