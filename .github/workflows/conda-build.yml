@@ -1,0 +1,23 @@
+name: Conda build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  conda-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install conda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-update-conda: true
+      - name: Build conda
+        shell: bash -l {0}
+        run: |
+          conda install "conda_build>=25"
+          conda config --remove channels defaults
+          conda config --append channels conda-forge
+          conda config --set anaconda_upload no
+          conda build conda
