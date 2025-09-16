@@ -26,9 +26,11 @@ jobs:
       
       - name: Publish to Conda
         shell: bash -l {0}
+        with:
+          SUPER_SECRET: ${{ secrets.ANACONDA_SECRET }}
         run: |
           conda activate base
           conda install anaconda-client
           anaconda --version
-          anaconda upload -t ${{ secrets.ANACONDA_SECRET }} "/usr/share/miniconda/envs/test/conda-bld/linux-64/conda_gc_test-1.2.1-3.conda"
+          anaconda -t $SUPER_SECRET upload "/usr/share/miniconda/envs/test/conda-bld/linux-64/conda_gc_test-1.2.1-3.conda"
 
