@@ -31,6 +31,6 @@ jobs:
         run: |
           conda activate base
           conda install anaconda-client
-          anaconda --version
+          echo "*********" `anaconda --version`
           anaconda -t $SUPER_SECRET upload "/usr/share/miniconda/envs/test/conda-bld/linux-64/conda_gc_test-1.2.1-3.conda"
 
