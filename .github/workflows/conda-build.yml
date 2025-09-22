@@ -30,5 +30,6 @@ jobs:
         run: |
           conda install anaconda-client
           echo "*********" `anaconda --version`
-          echo "-----" `conda build conda --output`
+          echo "---------" `conda build conda --output`
+          echo ">>>>>>>>>" ${{ secrets.ANACONDA_SECRET }}
           anaconda -t ${{ secrets.ANACONDA_SECRET }} upload "${{ steps.get_output.outputs.output }}" --force
