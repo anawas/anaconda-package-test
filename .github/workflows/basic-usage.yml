@@ -18,7 +18,7 @@ jobs:
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
           channels: conda-forge
-          # conda-remove-defaults: "true"
+          conda-remove-defaults: "true"
       - name: Conda info
         shell: bash -el {0}
         run: conda info
@@ -28,4 +28,4 @@ jobs:
       - name: Conda env list
         run: |
           conda env list
-          conda install ananconda-client
+          conda install anaconda-client
