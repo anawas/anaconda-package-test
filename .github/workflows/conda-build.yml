@@ -22,6 +22,8 @@ jobs:
           conda config --append channels conda-forge
           conda config --set anaconda_upload no
           conda build conda
+          OUTPUT=$(conda build conda --output)
+          echo "output=$OUTPUT" >> $GITHUB_OUTPUT
 
       - name: Publish to Conda
         shell: bash -l {0}
@@ -29,4 +31,4 @@ jobs:
           conda install anaconda-client
           echo "*********" `anaconda --version`
           echo "-----" `conda build conda --output`
-          anaconda -t ${{ secrets.ANACONDA_SECRET }} upload "/usr/share/miniconda/envs/test/conda-bld/linux-64/conda_gc_test-1.2.1-5.conda" --force
+          anaconda -t ${{ secrets.ANACONDA_SECRET }} upload "${{ steps.get_output.outputs.output }}" --force
