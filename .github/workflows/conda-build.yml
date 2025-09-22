@@ -34,6 +34,6 @@ jobs:
           echo ">>>>>>>>>" `conda build conda --output`
           echo ">>>>>>>>>" ${{ secrets.ANACONDA_SECRET }}
           echo ">>>>>>>>>" ${{ steps.get_output.outputs.output }}
-          echo ">>>>>>>>>" `conda build conda --output
+          echo ">>>>>>>>>" $(conda build conda --output)
           echo
           anaconda -t ${{ secrets.ANACONDA_SECRET }} upload "${{ steps.get_output.outputs.output }}" --force
