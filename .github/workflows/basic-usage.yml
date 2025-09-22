@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         os: ["ubuntu-latest", "windows-latest"]
-        python-version: ["3.7", "3.11"]
+        python-version: ["3.9", "3.10"]
     steps:
       - uses: conda-incubator/setup-miniconda@v3
         with:
@@ -27,4 +27,7 @@ jobs:
         shell: pwsh
         run: conda list
       - name: Conda env list
-        run: conda env list
+        run: |
+          conda env list
+          conda activate base
+          conda install ananconda-client
